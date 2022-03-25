@@ -6,14 +6,14 @@ spring:
           enabled: false
           lower-case-service-id: true
       routes:
-        - id: course-service-route
-          uri: lb://course-service
+        - id: catalog-service-route
+          uri: lb://catalog-service
           predicates:
-            - Path=/tuVieja/**
-        - id: roberto-service-route
-          uri: lb://roberto-service
+            - Path=/catalog/**
+        - id: movie-service-route
+          uri: lb://movie-service
           predicates:
-            - Path=/robertos/**
+            - Path=/movies/**
 server:
   port: ${SERVER_PORT:8080}
 
