@@ -1,0 +1,35 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+          lower-case-service-id: true
+      routes:
+        - id: course-service-route
+          uri: lb://course-service
+          predicates:
+            - Path=/tuVieja/**
+        - id: roberto-service-route
+          uri: lb://roberto-service
+          predicates:
+            - Path=/robertos/**
+server:
+  port: ${SERVER_PORT:8080}
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+management:
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
